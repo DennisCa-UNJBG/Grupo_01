@@ -1,0 +1,82 @@
+* {/* eliminando estilos por defecto dle navegador*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    background-color: rgb(220, 127, 21);
+    color: #fff;
+    padding-top:1%;
+    padding-left:15%;
+    padding-right:15%;
+}
+.header {
+    position: relative;
+    display: flex;
+    padding-top: 1.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    width: 100%;
+    margin-bottom: 2%;
+}
+.logo {
+    text-align: center;
+}
+.logo__title {
+    font-size: 4rem;
+    font-weight: 1200;
+}
+.logo__subtitle {
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding-top: 12px;
+}
+.nodos {
+    padding-top: 1rem;
+    width: 100%;
+}
+canvas {
+    border: 3px solid black;
+    background-color: rgb(224, 164, 164);
+    display: inline-block;
+    width: 100%;
+    height: 350px;
+    margin-bottom: 3%;
+}
+.botones{
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    padding-top: 1.5rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.boton{
+    width: 33%;
+}
+button, input {
+    border: 2px solid black;
+    display: inline-block;
+    border: 2%;
+    font-weight: 800;
+    padding: 1%;
+    margin-bottom: 5%;
+    width: 40%;
+    color: black;
+    background: orange;
+    font-weight: 800;
+}
+input{
+    background: rgb(239 0 0);
+    width: 20%;
+}
