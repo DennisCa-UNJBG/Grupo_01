@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=hCJyXzhTQvQGkSQ71vSz1jOJGFT1XDVwMGpIZWxUCW3ntQhvIdZAkpVX_VasO9NoLlxI0G7e1ite86uYgmjkngZFZjq8toyzm6FpvzQ9oWQxulE9lvpj8l0EXbDmkrWr0jUYawFaO87EL9Rh5nzkBFbvrQRvrq0urat_AyCKmUUJ66Mz5Vnx-OcnlPar0XruM70N7Dv3ovEB50-4OtJo_dydyNsZ2eSCUXMMMMj3yfBEKwY_2MaJCmV51VPsPCFqIHxFMqlJ1P62hpDEumIVnJXS1NTv5mPT7Yzi7vub3qFzaDPmt9K8IhXrKjIZYXhcxKnViIumm3CK-_QNOpXpA_sZSv4SyuDXlQgwvlmT9Unmnga_b5u8AN4qyK9tXcYGEiVQcg6VOyAJJp-WHV1CC7_oxLi08kXoRJgqSXen4AfE_ZSfa3o2XyQfGEx-_-KrOsIx_HiHDs6hEpFSqsqLLxFcNYYJHS0ModtfBan3E-dOCXsK1KWRTbgA05JgxDXwd8mA_fTuQQ2_5dVDi-ZoeUtqf94JcA-UQBH6aZW7lwqGq4pU7aRHqPtsojwNpJjmUnPF3HvmqzpENPnSHsUuzRCX1mMGu_roYFexQS7Q-zAdxYsk7QkBVejjatWWzdZcCZfIFAuveMHqrlwoR1zQ6C4EaLC8EjtowxXzquHBwE3i8peLevh49KIUtuodx4m9nhK09QxLzsR0xQdAwFgTHnmp6xHHqd5LJrjJ4UCRoOMmtbsA2IKMG8KUe0mpoZfEbalB3KPJoZV9xIC5hlDuM3IsLf8jbsGy0zpmGoeU8zEPkZE4Nje07AC7AfNEyiv9YTa0uBqySB-TF-ndPqUoXGmsKmKgZU5PwvAeN05h407LI1NbmqkBSC_cGfPBAgfvwz7mdGQ83hMpJ12YixpYFyJxYgQzIFolmUBtsKDdQR69RvG3vV1Q9Sa26OhoWrHHoDnscWaMdPk9igMVClzTS1wheKOktbSitlAc5tbKqNUhv3CGAfzM_87UqAzxoeEDDKBVK6n365LQie6w7N-nRDgM0FDibF3SFWlJhBXd3Alp5mGP0cbp-fWUvh56tJA_RLwXa5Dw9g8aC_tHoq5h17HCFFTvLfw44S1s-LnPsyjREpHyGZXoCAC1CBDvyVK2g0XrDLVRFlj9Su3w6iSPWW1mv2dN8Xp8kcnCseSxQjweBlwxjEUVwUn9TI7w7Tx3BfE2tWOlo2UWp7OoboDwv8zHjGq5iyAhNl4EpAlZMdL53EK_n_kzk-pNnKJmAe5L2P8TFj8ToZiT0LvDIBd6MEjB6wWLE80Qembs0nCyPzGNUTKFuFI2i9q3xKv6-hNwBnVUF4b6fOgPMDwAb7iv4OzJmYNKPmtr-QE_S7I1cmj1ZglmIMlNMc5x1hCtTkJiKEsaB86kxahDVgiFoEs2fA" charset="UTF-8"></script><script type="text/javascript">
+		
+		class Nodo{
+				
+				//publicos
+				v=0;
+				n=null;
+				
+		}
+		class Lista{
+
+			
+			_canvas=null;
+			_inicio=null;
+			_anterior=null;
+
+			constructor(canvas) {
+   				 	this._canvas = canvas;
+  			}
+			agregarNodo(){
+
+				var result = window.prompt("ingrese valor de nodo");
+				
+				var nodo=new Nodo();
+				nodo.v=result;
+
+
+				if(this._inicio==null){
+					 
+					 this._anterior=nodo;
+					 this._inicio=this._anterior;
+				}
+				else{
+
+					this._anterior.n=nodo;
+					this._anterior=nodo;
+	
+				}
+				
+				this.dibujarNodosLog();
+				this.dibujarNodos();
+			}
+			dibujarNodosLog(){
+
+				//var canvas=this.canvas;
+				//var ctx = canvas.getContext('2d');
+				var	tmp=this._inicio;
+				var cad="";
+				while(tmp!=null){
+					cad+=tmp.v+"::";
+					tmp=tmp.n;
+				}
+				console.log(cad);
+			}
+			dibujarNodos(){
+
+				var canvas=this._canvas;
+				var ctx = canvas.getContext('2d');
+				var	tmp=this._inicio;
+				
+				var x=0;
+				var y=0;
+				var ctd=0;				
+				while(tmp!=null){
+					
+					//Dibujar rectangulo
+					ctx.beginPath();
+					ctx.fillStyle = "rgb(200,0,0)";
+		     		ctx.fillRect (x,y, 55,30);
+                    //texto
+                    ctx.fillStyle="white";
+                    ctx.font = '15px Arial';
+                    ctx.fillText(tmp.v,x+20,y+20);
+                    ctx.closePath();
+
+                    //Dibujar flecha
+                    //linea de la flecha
+                    ctx.beginPath();
+                    ctx.moveTo(x+55,y+15);
+                    ctx.lineTo(x+55+20,y+15);
+                    ctx.closePath();
+                    ctx.stroke();
+                    //cabeza de la flecha
+                    ctx.beginPath();
+                    ctx.fillStyle="black";
+                    ctx.moveTo(x+55+20,y+10);
+                    ctx.lineTo(x+55+20+5,y+15);
+                    ctx.lineTo(x+55+20,y+20);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    x=80*++ctd;
+					tmp=tmp.n;
+				}
+				
+			}
+		}/////////////////////////////////////////////////////////
+
+		window.lista=null;
+
+		function agregar(){
+			var canvas=window.CANVAS;
+			if(window.lista==null){
+				window.lista=new Lista(canvas);		
+			}
+			lista.agregarNodo();	
+	
+		}/////////////////////////////
+		function cargar(){
+			var canvas=document.getElementById('tutorial'); 
+			window.CANVAS=canvas;
+			/*
+			var ctx = canvas.getContext('2d');
+			var ctx1 = canvas.getContext('2d');
+
+			 ctx.fillStyle = "rgb(200,0,0)";
+		     ctx.fillRect (10, 10, 55, 30);
+
+		     ctx1.fillStyle = "rgba(0, 0, 200, 0.5)";
+		     ctx1.fillRect (80, 30, 55, 30);
+		     */
+		}/////////////////////////////
+	</script>
+	<style type="text/css">
+      canvas { border: 1px solid black; }
+    </style>
+</head>
+<body onload="cargar();">
+
+
+<canvas id="tutorial" width="700" height="150"></canvas>
+<div id="salida"></div>
+<button onclick="agregar()">agregar</button>
+
+</body>
+</html>
