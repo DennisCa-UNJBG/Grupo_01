@@ -100,7 +100,19 @@ class Lista {
         }
     }
 
-    insertarInicio(){}
+    insertarInicio()
+    {
+        let newDato = document.getElementById("val-insertar-inicio").value;
+        let nodo = new Nodo();
+        nodo.valor = newDato;
+
+        nodo.nextNodo = this._inicio;
+        this._inicio = nodo;
+
+        this.dibujarNodosLog();
+        this.dibujarNodos();
+    }
+
     insertarFinal(){}
     eliminarInicio(){}
     eliminarFinal(){}
@@ -115,6 +127,7 @@ function agregar() {
     }
     lista.agregarNodo();
 }
+
 function cargar() {
     let canvas = document.getElementById("dibujarNodos");
     window.CANVAS = canvas;
@@ -128,4 +141,12 @@ function cargar() {
     elemCanvas1.fillStyle = "rgba(0, 0, 200, 0.5)";
     elemCanvas1.fillRect (80, 30, 55, 30);
         */
+}
+
+function insertarInicio() {
+    let canvas = window.CANVAS;
+    if(window.lista != null)
+    {
+        lista.insertarInicio();
+    }
 }
