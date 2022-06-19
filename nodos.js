@@ -1,7 +1,7 @@
 class Nodo {
   //publicos
-    v = 0;
-    n = null;
+    valor = 0;
+    nextNodo = null;
 }
 class Lista {
     _canvas = null;
@@ -11,33 +11,33 @@ class Lista {
     constructor(canvas) {
         this._canvas = canvas;
     }
-    agregarNodo() {
-        var result = window.prompt("ingrese valor de nodo");
 
-        var nodo = new Nodo();
-        nodo.v = result;
+    agregarNodo() {
+        let result = document.getElementById("val-agregar").value;
+
+        let nodo = new Nodo();
+        nodo.valor = result;
 
         if (this._inicio == null) {
             this._anterior = nodo;
             this._inicio = this._anterior;
         } else {
-            this._anterior.n = nodo;
+            this._anterior.nextNodo = nodo;
             this._anterior = nodo;
         }
 
         this.dibujarNodosLog();
         this.dibujarNodos();
+        //document.getElementById("val-agregar").value = "";
     }
 
     dibujarNodosLog()
     {
-        //var canvas=this.canvas;
-        //var ctx = canvas.getContext('2d');
-        var tmp = this._inicio;
-        var cad = "";
-        while (tmp != null) {
-            cad += tmp.v + "::";
-            tmp = tmp.n;
+        let iterador = this._inicio;
+        let cad = "";
+        while (iterador != null) {
+            cad += iterador.valor + " : ";
+            iterador = iterador.nextNodo;
         }
 
         console.log(cad);
@@ -45,67 +45,87 @@ class Lista {
 
     dibujarNodos()
     {
-        var canvas = this._canvas;
-        var ctx = canvas.getContext("2d");
-        var tmp = this._inicio;
+        let canvas = this._canvas;
+        let elemCanvas = canvas.getContext("2d");
+        let iterador = this._inicio;
+        // coordenadas de los elementos del canvas
+        let ejeX = 0;
+        let ejeY = 0;
+        let ancho = 30;
+        let alto = 20;
+        let columna = 0; // indicador de columna(1, 2, 3, ...)
+        let fila = 0; // indicador de fila(1, 2, 3, ...)
 
-        var x = 0;
-        var y = 0;
-        var ctd = 0;
-        while (tmp != null)
+        // dibujando elementos uno por uno
+        while (iterador != null)
         {
             //Dibujar rectangulo
-            ctx.beginPath();
-            ctx.fillStyle = "rgb(200,0,0)";
-            ctx.fillRect(x, y, 55, 30);
+            elemCanvas.beginPath();
+            elemCanvas.fillStyle = "orangered";
+            elemCanvas.fillRect(ejeX, ejeY, ancho, alto);
             //texto
-            ctx.fillStyle = "white";
-            ctx.font = "15px Arial";
-            ctx.fillText(tmp.v, x + 20, y + 20);
-            ctx.closePath();
+            elemCanvas.fillStyle = "white";
+            elemCanvas.font = "10px Arial";
+            elemCanvas.fillText(iterador.valor, ejeX + alto/2, ejeY + 12);
+            elemCanvas.closePath();
 
             //Dibujar flecha
             //linea de la flecha
-            ctx.beginPath();
-            ctx.moveTo(x + 55, y + 15);
-            ctx.lineTo(x + 55 + 20, y + 15);
-            ctx.closePath();
-            ctx.stroke();
+            elemCanvas.beginPath();
+            elemCanvas.moveTo(ejeX + ancho, ejeY + alto/2);
+            elemCanvas.lineTo(ejeX + ancho + 20, ejeY + alto/2);
+            elemCanvas.closePath();
+            elemCanvas.stroke();
             //cabeza de la flecha
-            ctx.beginPath();
-            ctx.fillStyle = "black";
-            ctx.moveTo(x + 55 + 20, y + 10);
-            ctx.lineTo(x + 55 + 20 + 5, y + 15);
-            ctx.lineTo(x + 55 + 20, y + 20);
-            ctx.closePath();
-            ctx.fill();
+            elemCanvas.beginPath();
+            elemCanvas.fillStyle = "black";
+            elemCanvas.moveTo(ejeX + ancho + 20, ejeY + 5);
+            elemCanvas.lineTo(ejeX + ancho + 20 + 10, ejeY + 10);
+            elemCanvas.lineTo(ejeX + ancho + 20, ejeY + 15);
+            elemCanvas.closePath();
+            elemCanvas.fill();
 
-            x = 80 * ++ctd;
-            tmp = tmp.n;
+            ejeX = (ancho * 2) * ++columna;
+            iterador = iterador.nextNodo;
+            // nueva fila
+            fila++;
+            if(fila == 5)
+            {
+                fila = 0;
+                ejeY += 25;
+                ejeX = 0;
+                columna = 0;
+            }
+            console.log(fila+" "+ejeX+" "+ejeY);
         }
     }
+
+    insertarInicio(){}
+    insertarFinal(){}
+    eliminarInicio(){}
+    eliminarFinal(){}
 }
 
 window.lista = null;
 
 function agregar() {
-    var canvas = window.CANVAS;
+    let canvas = window.CANVAS;
     if (window.lista == null) {
         window.lista = new Lista(canvas);
     }
     lista.agregarNodo();
 }
 function cargar() {
-    var canvas = document.getElementById("tutorial");
+    let canvas = document.getElementById("dibujarNodos");
     window.CANVAS = canvas;
     /*
-    var ctx = canvas.getContext('2d');
-    var ctx1 = canvas.getContext('2d');
+    let elemCanvas = canvas.getContext('2d');
+    let elemCanvas1 = canvas.getContext('2d');
 
-    ctx.fillStyle = "rgb(200,0,0)";
-    ctx.fillRect (10, 10, 55, 30);
+    elemCanvas.fillStyle = "rgb(200,0,0)";
+    elemCanvas.fillRect (10, 10, 55, 30);
 
-    ctx1.fillStyle = "rgba(0, 0, 200, 0.5)";
-    ctx1.fillRect (80, 30, 55, 30);
+    elemCanvas1.fillStyle = "rgba(0, 0, 200, 0.5)";
+    elemCanvas1.fillRect (80, 30, 55, 30);
         */
 }

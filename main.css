@@ -9,7 +9,7 @@ html {
     font-size: 62.5%;
 }
 body {
-    background-color: rgb(220, 127, 21);
+    background-color: #dc7f56;
     color: #fff;
     padding-top:1%;
     padding-left:15%;
@@ -77,6 +77,6 @@ button, input {
     font-weight: 800;
 }
 input{
-    background: rgb(239 0 0);
+    background: orangered;
     width: 20%;
 }

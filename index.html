@@ -17,33 +17,35 @@
 </header>
 
 <div class="nodos">
-	<canvas id="tutorial"></canvas>
+	<canvas id="dibujarNodos"></canvas>
 </div>
 
 <div class="botones">
 	<div class="boton">
 		<button id="agregar" onclick="agregar()">agregar</button>
-		<input id="val-agregar" type="text">
+		<input id="val-agregar" type="number">
 	</div>
 	<div class="boton">
-		<button id="agregar" onclick="agregar()">agregar</button>
-		<input id="val-agregar" type="text">
+		<button id="insertar-inicio" onclick="insertarInicio()">insertar inicio</button>
+		<input id="val-insertar-inicio" type="number">
 	</div>
 	<div class="boton">
-		<button id="agregar" onclick="agregar()">agregar</button>
-		<input id="val-agregar" type="text">
+		<button id="insertar-final" onclick="insertarFinal()">insertar final</button>
+		<input id="val-insertar-final" type="number">
 	</div>
+	<!-- plantilla de boton
 	<div class="boton">
 		<button id="agregar" onclick="agregar()">agregar</button>
-		<input id="val-agregar" type="text">
+		<input id="val-agregar" type="number">
+	</div>
+	-->
+	<div class="boton">
+		<button id="eliminar-inicio" onclick="eliminarInicio()">eliminar inicio</button>
+		<input id="val-eliminar-inicio" type="number">
 	</div>
 	<div class="boton">
-		<button id="agregar" onclick="agregar()">agregar</button>
-		<input id="val-agregar" type="text">
-	</div>
-	<div class="boton">
-		<button id="agregar" onclick="agregar()">agregar</button>
-		<input id="val-agregar" type="text">
+		<button id="eliminar-final" onclick="eliminarFinal()">eliminar final</button>
+		<input id="val-eliminar-final" type="number">
 	</div>
 </div>
 </body>
