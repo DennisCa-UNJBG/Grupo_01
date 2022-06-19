@@ -144,7 +144,26 @@ class Lista {
         }
     }
 
-    eliminarFinal(){}
+    eliminarFinal()
+    {
+        let iterador = this._inicio;
+        let temp = null;
+        // no podemos eliminar si solo existe 1 nodo
+        if(iterador.nextNodo != null)
+        {
+            while (iterador.nextNodo != null ) {
+                temp = iterador;
+                iterador = iterador.nextNodo;
+            }
+            //let temp2 = iterador;
+            temp.nextNodo = null;
+            this._ultimo = temp;
+            //delete lista[temp2];
+
+            this.dibujarNodosLog();
+            this.dibujarNodos();
+        }
+    }
 }
 
 window.lista = null;
@@ -194,5 +213,13 @@ function eliminarInicio()
     if(window.lista != null)
     {
         lista.eliminarInicio();
+    }
+}
+
+function eliminarFinal()
+{
+    if(window.lista != null)
+    {
+        lista.eliminarFinal();
     }
 }
