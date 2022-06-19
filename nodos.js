@@ -48,6 +48,7 @@ class Lista {
         let canvas = this._canvas;
         let elemCanvas = canvas.getContext("2d");
         let iterador = this._inicio;
+
         // coordenadas de los elementos del canvas
         let ejeX = 0;
         let ejeY = 0;
@@ -55,6 +56,9 @@ class Lista {
         let alto = 20;
         let columna = 0; // indicador de columna(1, 2, 3, ...)
         let fila = 0; // indicador de fila(1, 2, 3, ...)
+
+        //limpiar el lienzo canva antes de dibujar
+        elemCanvas.clearRect(0, 0, canvas.width, canvas.height);
 
         // dibujando elementos uno por uno
         while (iterador != null)
@@ -126,7 +130,20 @@ class Lista {
         this.dibujarNodos();
     }
 
-    eliminarInicio(){}
+    eliminarInicio()
+    {
+        // no podemos eliminar si solo existe 1 nodo
+        if(this._inicio.nextNodo != null)
+        {
+            //let temp = this._inicio;
+            this._inicio = this._inicio.nextNodo;
+            //delete lista[temp];
+
+            this.dibujarNodosLog();
+            this.dibujarNodos();
+        }
+    }
+
     eliminarFinal(){}
 }
 
@@ -168,5 +185,14 @@ function insertarFinal() {
     if(window.lista != null)
     {
         lista.insertarFinal();
+    }
+}
+
+function eliminarInicio()
+{
+    let canvas = window.CANVAS;
+    if(window.lista != null)
+    {
+        lista.eliminarInicio();
     }
 }
