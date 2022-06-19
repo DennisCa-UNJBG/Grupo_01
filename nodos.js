@@ -6,7 +6,7 @@ class Nodo {
 class Lista {
     _canvas = null;
     _inicio = null;
-    _anterior = null;
+    _ultimo = null;
 
     constructor(canvas) {
         this._canvas = canvas;
@@ -19,11 +19,11 @@ class Lista {
         nodo.valor = result;
 
         if (this._inicio == null) {
-            this._anterior = nodo;
-            this._inicio = this._anterior;
+            this._ultimo = nodo;
+            this._inicio = this._ultimo;
         } else {
-            this._anterior.nextNodo = nodo;
-            this._anterior = nodo;
+            this._ultimo.nextNodo = nodo;
+            this._ultimo = nodo;
         }
 
         this.dibujarNodosLog();
@@ -113,7 +113,19 @@ class Lista {
         this.dibujarNodos();
     }
 
-    insertarFinal(){}
+    insertarFinal()
+    {
+        let newDato = document.getElementById("val-insertar-final").value;
+        let nodo = new Nodo();
+        nodo.valor = newDato;
+
+        this._ultimo.nextNodo = nodo;
+        this._ultimo = nodo;
+
+        this.dibujarNodosLog();
+        this.dibujarNodos();
+    }
+
     eliminarInicio(){}
     eliminarFinal(){}
 }
@@ -148,5 +160,13 @@ function insertarInicio() {
     if(window.lista != null)
     {
         lista.insertarInicio();
+    }
+}
+
+function insertarFinal() {
+    let canvas = window.CANVAS;
+    if(window.lista != null)
+    {
+        lista.insertarFinal();
     }
 }
