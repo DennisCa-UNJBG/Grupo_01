@@ -9,7 +9,7 @@ html {
     font-size: 62.5%;
 }
 body {
-    background-color: #dc7f56;
+    background-color: rgb(220, 127, 21);
     color: #fff;
     padding-top:1%;
     padding-left:15%;
@@ -48,35 +48,33 @@ canvas {
     display: inline-block;
     width: 100%;
     height: 350px;
-    margin-bottom: 3%;
+    margin-bottom: 1.5rem;
 }
 .botones{
     box-sizing: border-box;
     position: relative;
     display: flex;
-    padding-top: 1.5rem;
-    flex-direction: row;
     justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
     width: 100%;
 }
 .boton{
     width: 33%;
+    display: flex;
+    justify-content: center;
 }
 button, input {
-    border: 2px solid black;
     display: inline-block;
-    border: 2%;
-    font-weight: 800;
+    border: 2px solid black;
     padding: 1%;
-    margin-bottom: 5%;
-    width: 40%;
+    margin: 2%;
+    width: 70%;
     color: black;
     background: orange;
     font-weight: 800;
 }
 input{
-    background: orangered;
+    background: rgb(239 0 0);
     width: 20%;
 }
+

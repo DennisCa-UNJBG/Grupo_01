@@ -3,6 +3,7 @@ class Nodo {
     valor = 0;
     nextNodo = null;
 }
+
 class Lista {
     _canvas = null;
     _inicio = null;
@@ -28,7 +29,8 @@ class Lista {
 
         this.dibujarNodosLog();
         this.dibujarNodos();
-        //document.getElementById("val-agregar").value = "";
+        // limpiar la caja de texto
+        document.getElementById("val-agregar").value = "";
     }
 
     dibujarNodosLog()
@@ -115,6 +117,8 @@ class Lista {
 
         this.dibujarNodosLog();
         this.dibujarNodos();
+        // limpiar la caja de texto
+        document.getElementById("val-insertar-inicio").value = "";
     }
 
     insertarFinal()
@@ -128,6 +132,8 @@ class Lista {
 
         this.dibujarNodosLog();
         this.dibujarNodos();
+        // limpiar la caja de texto
+        document.getElementById("val-insertar-final").value = "";
     }
 
     eliminarInicio()
@@ -163,6 +169,41 @@ class Lista {
             this.dibujarNodosLog();
             this.dibujarNodos();
         }
+    }
+
+    eliminarX()
+    {
+        let newDato = document.getElementById("val-eliminar-x").value;
+        // limpiar la caja de texto
+        document.getElementById("val-eliminar-x").value = "";
+    }
+
+    insertarAntesX()
+    {
+        let newDato = document.getElementById("val-insertar-antes").value;
+        // limpiar la caja de texto
+        document.getElementById("val-insertar-antes").value = "";
+    }
+
+    insertarDespuesX()
+    {
+        let newDato = document.getElementById("val-insertar-despues").value;
+         // limpiar la caja de texto
+        document.getElementById("val-insertar-despues").value = "";
+    }
+
+    eliminarAntesX()
+    {
+        let newDato = document.getElementById("val-eliminar-antes").value;
+         // limpiar la caja de texto
+        document.getElementById("val-eliminar-antes").value = "";
+    }
+
+    eliminarDespuesX()
+    {
+        let newDato = document.getElementById("val-eliminar-despues").value;
+         // limpiar la caja de texto
+        document.getElementById("val-eliminar-despues").value = "";
     }
 }
 
@@ -223,3 +264,19 @@ function eliminarFinal()
         lista.eliminarFinal();
     }
 }
+
+
+function eliminarX()
+{}
+
+function insertarAntesX()
+{}
+
+function insertarDespuesX()
+{}
+
+function eliminarAntesX()
+{}
+
+function eliminarDespuesX()
+{}
