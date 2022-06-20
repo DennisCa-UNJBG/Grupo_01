@@ -15,6 +15,7 @@ class Lista {
 
     agregarNodo() {
         let result = document.getElementById("val-agregar").value;
+        result = transformar(result);
 
         let nodo = new Nodo();
         nodo.valor = result;
@@ -109,6 +110,7 @@ class Lista {
     insertarInicio()
     {
         let newDato = document.getElementById("val-insertar-inicio").value;
+        newDato = transformar(newDato);
         let nodo = new Nodo();
         nodo.valor = newDato;
 
@@ -124,6 +126,7 @@ class Lista {
     insertarFinal()
     {
         let newDato = document.getElementById("val-insertar-final").value;
+        newDato = transformar(newDato);
         let nodo = new Nodo();
         nodo.valor = newDato;
 
@@ -181,6 +184,7 @@ class Lista {
     eliminarX()
     {
         let newDato = document.getElementById("val-eliminar-x").value;
+        newDato = transformar(newDato);
         // limpiar la caja de texto
         document.getElementById("val-eliminar-x").value = "";
     }
@@ -188,6 +192,7 @@ class Lista {
     insertarAntesX()
     {
         let newDato = document.getElementById("val-insertar-antes").value;
+        newDato = transformar(newDato);
         // limpiar la caja de texto
         document.getElementById("val-insertar-antes").value = "";
     }
@@ -195,6 +200,7 @@ class Lista {
     insertarDespuesX()
     {
         let newDato = document.getElementById("val-insertar-despues").value;
+        newDato = transformar(newDato);
          // limpiar la caja de texto
         document.getElementById("val-insertar-despues").value = "";
     }
@@ -202,6 +208,7 @@ class Lista {
     eliminarAntesX()
     {
         let newDato = document.getElementById("val-eliminar-antes").value;
+        newDato = transformar(newDato);
          // limpiar la caja de texto
         document.getElementById("val-eliminar-antes").value = "";
     }
@@ -209,6 +216,7 @@ class Lista {
     eliminarDespuesX()
     {
         let newDato = document.getElementById("val-eliminar-despues").value;
+        newDato = transformar(newDato);
          // limpiar la caja de texto
         document.getElementById("val-eliminar-despues").value = "";
     }
@@ -220,9 +228,13 @@ function agregar() {
     let canvas = window.CANVAS;
     if (window.lista == null) {
         window.lista = new Lista(canvas);
+        lista.agregarNodo();
+        ocultarAlerta();
     }
-    lista.agregarNodo();
-    ocultarAlerta();
+    else
+    {
+        mostrarAlerta("Ya existe una lista, no puedes crear otra!!!");
+    }
 }
 
 function cargar() {
@@ -315,5 +327,13 @@ function mostrarAlerta(mensaje) {
 function ocultarAlerta() {
     element = document.getElementById('alerta');
     element.style.visibility = 'hidden';
+}
+
+function transformar(valor)
+{
+    if(valor >= 1 && valor <= 100)
+        return valor;
+
+    return 0;
 }
 
