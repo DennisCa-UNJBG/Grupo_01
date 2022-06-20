@@ -155,7 +155,7 @@ class Lista {
             this.dibujarNodosLog();
             this.dibujarNodos();
         }
-        
+
         else{
             mostrarAlerta("Solo existe un nodo!!! no se puede procesar la solicitud");
         }
@@ -185,10 +185,52 @@ class Lista {
         }
     }
 
+    buscar(dato)
+    {
+        let iterador = this._inicio;
+        let resp = [null, null, null];//[anterior, actual, siguiente];
+        resp[0] = iterador;
+        resp[1] = iterador;
+        resp[2] = iterador.nextNodo;
+
+        while (iterador.nextNodo != null )
+        {
+            if(iterador.valor == dato)
+                break;
+
+            resp[0] = iterador;
+            iterador = iterador.nextNodo;
+            resp[1] = iterador;
+            if(iterador.nextNodo != null)
+                resp[2] = iterador.nextNodo;
+        }
+
+        if(iterador.entero == dato)
+            return resp;
+        else
+            resp[1] = null;
+
+        return resp;
+    }
+
     eliminarX()
     {
-        let newDato = document.getElementById("val-eliminar-x").value;
-        newDato = transformar(newDato);
+        let dato = document.getElementById("val-eliminar-x").value;
+        dato = transformar(dato);
+
+        if(this._inicio.valor == dato)
+            this.eliminarInicio();
+        else if(this._ultimo.valor == dato)
+            this.eliminarFinal();
+        else
+        {
+            let busqueda = this.buscar(dato);
+            busqueda[0].nextNodo = busqueda[2]
+        }
+
+        this.dibujarNodosLog();
+        this.dibujarNodos();
+
         // limpiar la caja de texto
         document.getElementById("val-eliminar-x").value = "";
     }
@@ -308,7 +350,16 @@ function eliminarFinal()
 
 
 function eliminarX()
-{}
+{
+    if(window.lista != null)
+    {
+        ocultarAlerta();
+        lista.eliminarX();
+    }
+    else{
+        mostrarAlerta("No existe una lista disponible para procesar la petición!!!");
+    }
+}
 
 function insertarAntesX()
 {}
