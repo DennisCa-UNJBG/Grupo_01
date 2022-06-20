@@ -71,14 +71,18 @@ class Lista {
             elemCanvas.fillStyle = "orangered";
             elemCanvas.fillRect(ejeX, ejeY, ancho, alto);
             //texto
-            elemCanvas.fillStyle = "white";
-            elemCanvas.font = "10px Arial";
-            elemCanvas.fillText(iterador.valor, ejeX + alto/2, ejeY + 12);
+            elemCanvas.fillStyle = "black"; //color de relleno
+            elemCanvas.font = "bold 1.6rem serif";
+            elemCanvas.textAlign = "center"; // centrar texto
+            elemCanvas.fillText(iterador.valor, ejeX + ancho*0.5, ejeY + alto*0.7); // centrar texto
+            elemCanvas.shadowColor = "#4e4534"; // sombra del texto
+            elemCanvas.shadowBlur = 4; // tamaño de sombra
             elemCanvas.closePath();
 
             //Dibujar flecha
             //linea de la flecha
             elemCanvas.beginPath();
+            elemCanvas.fillStyle = "black";
             elemCanvas.moveTo(ejeX + ancho, ejeY + alto/2);
             elemCanvas.lineTo(ejeX + ancho + 20, ejeY + alto/2);
             elemCanvas.closePath();
