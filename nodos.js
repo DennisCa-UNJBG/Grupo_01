@@ -148,6 +148,10 @@ class Lista {
             this.dibujarNodosLog();
             this.dibujarNodos();
         }
+        
+        else{
+            mostrarAlerta("Solo existe un nodo!!! no se puede procesar la solicitud");
+        }
     }
 
     eliminarFinal()
@@ -168,6 +172,9 @@ class Lista {
 
             this.dibujarNodosLog();
             this.dibujarNodos();
+        }
+        else{
+            mostrarAlerta("Solo existe un nodo!!! no se puede procesar la solicitud");
         }
     }
 
@@ -215,6 +222,7 @@ function agregar() {
         window.lista = new Lista(canvas);
     }
     lista.agregarNodo();
+    ocultarAlerta();
 }
 
 function cargar() {
@@ -230,13 +238,18 @@ function cargar() {
     elemCanvas1.fillStyle = "rgba(0, 0, 200, 0.5)";
     elemCanvas1.fillRect (80, 30, 55, 30);
         */
+    ocultarAlerta();
 }
 
 function insertarInicio() {
     let canvas = window.CANVAS;
     if(window.lista != null)
     {
+        ocultarAlerta();
         lista.insertarInicio();
+    }
+    else{
+        mostrarAlerta("No existe una lista disponible para agregar el nuevo nodo!!!");
     }
 }
 
@@ -244,7 +257,11 @@ function insertarFinal() {
     let canvas = window.CANVAS;
     if(window.lista != null)
     {
+        ocultarAlerta();
         lista.insertarFinal();
+    }
+    else{
+        mostrarAlerta("No existe una lista disponible para agregar el nuevo nodo!!!");
     }
 }
 
@@ -253,7 +270,11 @@ function eliminarInicio()
     let canvas = window.CANVAS;
     if(window.lista != null)
     {
+        ocultarAlerta();
         lista.eliminarInicio();
+    }
+    else{
+        mostrarAlerta("No existe una lista disponible para procesar la petición!!!");
     }
 }
 
@@ -261,7 +282,11 @@ function eliminarFinal()
 {
     if(window.lista != null)
     {
+        ocultarAlerta();
         lista.eliminarFinal();
+    }
+    else{
+        mostrarAlerta("No existe una lista disponible para procesar la petición!!!");
     }
 }
 
@@ -280,3 +305,15 @@ function eliminarAntesX()
 
 function eliminarDespuesX()
 {}
+
+function mostrarAlerta(mensaje) {
+    element = document.getElementById('alerta');
+    element.style.visibility = 'visible';
+    document.getElementById('id-mensajes').textContent = mensaje;
+}
+
+function ocultarAlerta() {
+    element = document.getElementById('alerta');
+    element.style.visibility = 'hidden';
+}
+
