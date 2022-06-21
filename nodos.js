@@ -292,6 +292,15 @@ class Lista {
          // limpiar la caja de texto
         document.getElementById("val-eliminar-despues").value = "";
     }
+
+    eliminarLista()
+    {
+        this._inicio = null;
+        this._ultimo = null;
+        this.dibujarNodosLog();
+        this.dibujarNodos();
+        this._canvas = null;
+    }
 }
 
 window.lista = null;
@@ -429,3 +438,16 @@ function transformar(valor)
     return 0;
 }
 
+function eliminarLista()
+{
+    if(window.lista != null)
+    {
+        ocultarAlerta();
+        lista.eliminarLista();
+        window.lista = null;
+        mostrarAlerta("La lista fue eliminada correctamente!!!");
+    }
+    else{
+        mostrarAlerta("No existe una ninguna lista que pueda ser eliminada.");
+    }
+}
