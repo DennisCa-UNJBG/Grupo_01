@@ -209,11 +209,8 @@ class Lista {
         return resp;
     }
 
-    eliminarX()
+    eliminarX(dato)
     {
-        let dato = document.getElementById("val-eliminar-x").value;
-        dato = transformar(dato);
-
         if(this._inicio.valor == dato)
             this.eliminarInicio();
         else if(this._ultimo.valor == dato)
@@ -321,8 +318,21 @@ class Lista {
 
     eliminarDespuesX()
     {
-        let newDato = document.getElementById("val-eliminar-despues").value;
-        newDato = transformar(newDato);
+        let dato = document.getElementById("val-eliminar-despues").value;
+        dato = transformar(dato);
+
+        let busqueda = this.buscar(dato);
+        if(busqueda[1] == null)
+            mostrarAlerta("El elemento proporcionado no existe en la lista actual..");
+        else if(this._ultimo.valor == dato)
+            mostrarAlerta("No se puede eliminar, no existe ningun Nodo posterior");
+        else
+        {
+            if(this._inicio.valor == busqueda[2].valor)
+                this.eliminarFinal(dato);
+            else
+                this.eliminarX(busqueda[2].valor);
+        }
          // limpiar la caja de texto
         document.getElementById("val-eliminar-despues").value = "";
     }
@@ -427,7 +437,9 @@ function eliminarX()
     if(window.lista != null)
     {
         ocultarAlerta();
-        lista.eliminarX();
+        let dato = document.getElementById("val-eliminar-x").value;
+        dato = transformar(dato);
+        lista.eliminarX(dato);
     }
     else{
         mostrarAlerta("No existe una lista disponible para procesar la petición!!!");
@@ -472,7 +484,16 @@ function eliminarAntesX()
 }
 
 function eliminarDespuesX()
-{}
+{
+    if(window.lista != null)
+    {
+        ocultarAlerta();
+        lista.eliminarDespuesX();
+    }
+    else{
+        mostrarAlerta("No existe una lista disponible para procesar la petición!!!");
+    }
+}
 
 function mostrarAlerta(mensaje) {
     element = document.getElementById('alerta');
