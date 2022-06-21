@@ -505,10 +505,16 @@ function ocultarAlerta() {
 
 function transformar(valor)
 {
-    if(isNaN(valor) && (valor >= -999 && valor <= 999))
+    if(valor == "")
+    {
+        mostrarAlerta("Cualquier valor menor a -999, mayor a 999  o distinto de un número se convertira en 0")
+        return 0;
+    }
+    else if (valor >= -999 && valor <= 999)
         return valor;
     else
-        mostrarAlerta("Cualquier valor menor a -999, mayor a 999  o distinto de un número se convertira en 0")
+        mostrarAlerta("Cualquier valor menor a -999, mayor a 999  o distinto de un número se convertira en 000")
+
     return 0;
 }
 
