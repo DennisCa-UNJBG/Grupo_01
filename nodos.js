@@ -299,8 +299,22 @@ class Lista {
 
     eliminarAntesX()
     {
-        let newDato = document.getElementById("val-eliminar-antes").value;
-        newDato = transformar(newDato);
+        let dato = document.getElementById("val-eliminar-antes").value;
+        dato = transformar(dato);
+
+        let busqueda = this.buscar(dato);
+        if(busqueda[1] == null)
+            mostrarAlerta("El elemento proporcionado no existe en la lista actual.");
+        else if(this._inicio.valor == dato)
+            mostrarAlerta("No se puede eliminar, no existe ningun Nodo anterior");
+        else
+        {
+            if(this._inicio.valor == busqueda[0].valor)
+                this.eliminarInicio(dato);
+            else
+                this.eliminarX(busqueda[0].valor);
+        }
+
          // limpiar la caja de texto
         document.getElementById("val-eliminar-antes").value = "";
     }
@@ -446,7 +460,16 @@ function insertarDespuesX()
 }
 
 function eliminarAntesX()
-{}
+{
+    if(window.lista != null)
+    {
+        ocultarAlerta();
+        lista.eliminarAntesX();
+    }
+    else{
+        mostrarAlerta("No existe una lista disponible para procesar la petición!!!");
+    }
+}
 
 function eliminarDespuesX()
 {}
