@@ -111,10 +111,8 @@ class Lista {
         }
     }
 
-    insertarInicio()
+    insertarInicio(newDato)
     {
-        let newDato = document.getElementById("val-insertar-inicio").value;
-        newDato = transformar(newDato);
         let nodo = new Nodo();
         nodo.valor = newDato;
 
@@ -205,7 +203,7 @@ class Lista {
                 resp[2] = iterador.nextNodo;
         }
 
-        if(iterador.entero == dato)
+        if(iterador.valor == dato)
             return resp;
         else
             resp[1] = null;
@@ -225,11 +223,16 @@ class Lista {
         else
         {
             let busqueda = this.buscar(dato);
-            busqueda[0].nextNodo = busqueda[2]
-        }
+            if(busqueda[1] == null)
+                mostrarAlerta("El elemento proporcionado no existe en la lista actual.");
+            else
+            {
+                busqueda[0].nextNodo = busqueda[2];
 
-        this.dibujarNodosLog();
-        this.dibujarNodos();
+                this.dibujarNodosLog();
+                this.dibujarNodos();
+            }
+        }
 
         // limpiar la caja de texto
         document.getElementById("val-eliminar-x").value = "";
@@ -237,10 +240,33 @@ class Lista {
 
     insertarAntesX()
     {
-        let newDato = document.getElementById("val-insertar-antes").value;
-        newDato = transformar(newDato);
+        let dato1 = document.getElementById("val-insertar-antes1").value;
+        dato1 = transformar(dato1);
+        let dato2 = document.getElementById("val-insertar-antes2").value;
+        dato2 = transformar(dato2);
+
+        if(this._inicio.valor == dato1)
+            this.insertarInicio(dato2);
+        else
+        {
+            let busqueda = this.buscar(dato1);
+            if(busqueda[1] == null)
+                mostrarAlerta("El elemento proporcionado no existe en la lista actual.");
+            else
+            {
+                let newNodo = new Nodo();
+                newNodo.valor = dato2;
+                newNodo.nextNodo = busqueda[1];
+                busqueda[0].nextNodo = newNodo;
+
+                this.dibujarNodosLog();
+                this.dibujarNodos();
+            }
+        }
+
         // limpiar la caja de texto
-        document.getElementById("val-insertar-antes").value = "";
+        document.getElementById("val-insertar-antes1").value = "";
+        document.getElementById("val-insertar-antes2").value = "";
     }
 
     insertarDespuesX()
@@ -304,7 +330,9 @@ function insertarInicio() {
     if(window.lista != null)
     {
         ocultarAlerta();
-        lista.insertarInicio();
+        let newDato = document.getElementById("val-insertar-inicio").value;
+        newDato = transformar(newDato);
+        lista.insertarInicio(newDato);
     }
     else{
         mostrarAlerta("No existe una lista disponible para agregar el nuevo nodo!!!");
@@ -362,7 +390,16 @@ function eliminarX()
 }
 
 function insertarAntesX()
-{}
+{
+    if(window.lista != null)
+    {
+        ocultarAlerta();
+        lista.insertarAntesX();
+    }
+    else{
+        mostrarAlerta("No existe una lista disponible para procesar la petición!!!");
+    }
+}
 
 function insertarDespuesX()
 {}
