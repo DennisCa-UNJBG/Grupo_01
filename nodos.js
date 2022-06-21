@@ -458,7 +458,6 @@ function insertarAntesX()
 
 function insertarDespuesX()
 {
-    
     if(window.lista != null)
     {
         ocultarAlerta();
@@ -506,10 +505,10 @@ function ocultarAlerta() {
 
 function transformar(valor)
 {
-    if(valor >= -999 && valor <= 999)
+    if(isNaN(valor) && (valor >= -999 && valor <= 999))
         return valor;
-
-    mostrarAlerta("Cualquier valor menor a -999, mayor a 999  o distinto de un número se convertira en 0")
+    else
+        mostrarAlerta("Cualquier valor menor a -999, mayor a 999  o distinto de un número se convertira en 0")
     return 0;
 }
 
