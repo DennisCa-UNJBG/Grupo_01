@@ -506,9 +506,10 @@ function ocultarAlerta() {
 
 function transformar(valor)
 {
-    if(valor >= 1 && valor <= 100)
+    if(valor >= -999 && valor <= 999)
         return valor;
 
+    mostrarAlerta("Cualquier valor menor a -999, mayor a 999  o distinto de un número se convertira en 0")
     return 0;
 }
 
