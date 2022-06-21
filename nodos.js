@@ -125,10 +125,8 @@ class Lista {
         document.getElementById("val-insertar-inicio").value = "";
     }
 
-    insertarFinal()
+    insertarFinal(newDato)
     {
-        let newDato = document.getElementById("val-insertar-final").value;
-        newDato = transformar(newDato);
         let nodo = new Nodo();
         nodo.valor = newDato;
 
@@ -271,10 +269,32 @@ class Lista {
 
     insertarDespuesX()
     {
-        let newDato = document.getElementById("val-insertar-despues").value;
-        newDato = transformar(newDato);
+        let dato1 = document.getElementById("val-insertar-despues1").value;
+        dato1 = transformar(dato1);
+        let dato2 = document.getElementById("val-insertar-despues2").value;
+        dato2 = transformar(dato2);
+
+        if(this._ultimo.valor == dato1)
+            this.insertarFinal(dato2);
+        else
+        {
+            let busqueda = this.buscar(dato1);
+            if(busqueda[1] == null)
+                mostrarAlerta("El elemento proporcionado no existe en la lista actual.");
+            else
+            {
+                let newNodo = new Nodo();
+                newNodo.valor = dato2;
+                newNodo.nextNodo = busqueda[2];
+                busqueda[1].nextNodo = newNodo;
+
+                this.dibujarNodosLog();
+                this.dibujarNodos();
+            }
+        }
          // limpiar la caja de texto
-        document.getElementById("val-insertar-despues").value = "";
+        document.getElementById("val-insertar-despues1").value = "";
+        document.getElementById("val-insertar-despues2").value = "";
     }
 
     eliminarAntesX()
@@ -353,7 +373,9 @@ function insertarFinal() {
     if(window.lista != null)
     {
         ocultarAlerta();
-        lista.insertarFinal();
+        let newDato = document.getElementById("val-insertar-final").value;
+        newDato = transformar(newDato);
+        lista.insertarFinal(newDato);
     }
     else{
         mostrarAlerta("No existe una lista disponible para agregar el nuevo nodo!!!");
@@ -411,7 +433,17 @@ function insertarAntesX()
 }
 
 function insertarDespuesX()
-{}
+{
+    
+    if(window.lista != null)
+    {
+        ocultarAlerta();
+        lista.insertarDespuesX();
+    }
+    else{
+        mostrarAlerta("No existe una lista disponible para procesar la petición!!!");
+    }
+}
 
 function eliminarAntesX()
 {}
