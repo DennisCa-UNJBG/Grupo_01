@@ -9,7 +9,7 @@ html {
     font-size: 62.5%;
 }
 body {
-    background-color: rgb(220, 127, 21);
+    background-color: #ED8555;
     color: #fff;
     padding-top:1%;
     padding-left:10%;
@@ -45,7 +45,7 @@ body {
 }
 canvas {
     border: 3px solid black;
-    background-color: rgb(224, 164, 164);
+    background-color: #ffa87d;
     display: inline-block;
     width: 100%;
     height: 350px;
@@ -74,16 +74,18 @@ canvas {
 }
 button, input {
     display: inline-block;
-    border: 2px solid black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    border: 2px solid orangered;
     padding: 1%;
     margin: 2%;
     width: 70%;
-    color: black;
-    background: orange;
+    color: #ecd9d9;
+    background: #ff9800;
     font-weight: 800;
 }
 input{
-    background: rgb(239 0 0);
+    background: #ff0000;
+    border: 2px solid #e00000;
     width: 20%;
 }
 

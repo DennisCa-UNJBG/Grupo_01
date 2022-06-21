@@ -68,15 +68,13 @@ class Lista {
         {
             //Dibujar rectangulo
             elemCanvas.beginPath();
-            elemCanvas.fillStyle = "orangered";
+            elemCanvas.fillStyle = "red";
             elemCanvas.fillRect(ejeX, ejeY, ancho, alto);
             //texto
-            elemCanvas.fillStyle = "black"; //color de relleno
+            elemCanvas.fillStyle = "#ecd9d9"; //color de relleno
             elemCanvas.font = "bold 1.6rem serif";
             elemCanvas.textAlign = "center"; // centrar texto
             elemCanvas.fillText(iterador.valor, ejeX + ancho*0.5, ejeY + alto*0.7); // centrar texto
-            elemCanvas.shadowColor = "#4e4534"; // sombra del texto
-            elemCanvas.shadowBlur = 4; // tamaño de sombra
             elemCanvas.closePath();
 
             //Dibujar flecha
