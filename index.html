@@ -7,6 +7,9 @@
 			import {insertar_al_final} from './lib/index.js';
 			import {insertar_antes_X} from './lib/index.js';
 			import {inserta_despues_X} from './lib/index.js';
+			import {elimina_inicio} from './lib/index.js';
+			import {elimina_ultimo} from './lib/index.js';
+			import {elimina_X} from './lib/index.js';
 
 			window.CANVAS = document.getElementById("tutorial");
 
@@ -14,6 +17,9 @@
 			window.insertar_al_final=insertar_al_final;
 			window.insertar_antes_X=insertar_antes_X;
 			window.inserta_despues_X=inserta_despues_X;
+			window.elimina_inicio=elimina_inicio;
+			window.elimina_ultimo=elimina_ultimo;
+			window.elimina_X=elimina_X;
 
 		</script>
 
@@ -46,6 +52,16 @@
 				<button id="insertar-despues" onclick="inserta_despues_X()">Insertar despues (x) <br>1)Elemento - 2)Dato</button>
 				<input id="val-insertar-despues1" type="number" min="-999" max="999">
 				<input id="val-insertar-despues2" type="number" min="-999" max="999">
+			</div>
+			<div class="boton">
+				<button id="eliminar-inicio" onclick="elimina_inicio()">Eliminar Inicio</button>
+			</div>
+			<div class="boton">
+				<button id="eliminar-final" onclick="elimina_ultimo()">Eliminar Final</button>
+			</div>
+			<div class="boton">
+				<button id="eliminar-x" onclick="elimina_X()">Eliminar (X)</button>
+				<input id="val-eliminar-x" type="number" min="-999" max="999">
 			</div>
 		</div>
 	</body>
