@@ -1,79 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Proyecto Nodos</title>
-<script src="./nodos.js"></script>
-<link rel="stylesheet" href="./main.css" />
-</head>
-<body onload="cargar();">
-<header class="header">
-	<div class="titulo">
-		<h1 class="main_title">Proyecto -> Creación de una Lista en JS</h1>
-		<h3 class="sub_title">Curso: Estructura de Datos</h3>
-	</div>
-</header>
+	<head>
+		<link rel="stylesheet" href="lib/style.css">
+		<script type="module">
+			import {agregar} from './lib/index.js';
+			import {insertar_al_final} from './lib/index.js';
 
-<div class="nodos">
-	<canvas id="dibujarNodos"></canvas>
-</div>
+			window.agregar=agregar;
+			window.insertar_al_final=insertar_al_final;
 
-<div id="alerta" class="alertas">
-	<h2 id="id-mensajes">mensaje de prueba</h2>
-</div>
+		</script>
 
-<div class="botones">
-	<div class="boton">
-		<button id="agregar" onclick="agregar()">Crear Lista</button>
-		<input id="val-agregar" type="number" min="-999" max="999">
-	</div>
-	<div class="boton">
-		<button id="insertar-inicio" onclick="insertarInicio()">insertar inicio</button>
-		<input id="val-insertar-inicio" type="number" min="-999" max="999">
-	</div>
-	<div class="boton">
-		<button id="insertar-final" onclick="insertarFinal()">insertar final</button>
-		<input id="val-insertar-final" type="number" min="-999" max="999">
-	</div>
-	<div class="boton">
-		<button id="eliminar-inicio" onclick="eliminarInicio()">eliminar inicio</button>
-	</div>
-	<div class="boton">
-		<button id="eliminar-final" onclick="eliminarFinal()">eliminar final</button>
-	</div>
-	<div class="boton">
-		<button id="eliminar-x" onclick="eliminarX()">eliminar (X)</button>
-		<input id="val-eliminar-x" type="number" min="-999" max="999">
-	</div>
-	<div class="boton">
-		<button id="insertar-antes" onclick="insertarAntesX()">Insertar antes (x)<br>1)Elemento - 2)Dato</button>
-		<input id="val-insertar-antes1" type="number" min="-999" max="999">
-		<input id="val-insertar-antes2" type="number" min="-999" max="999">
-	</div>
-	<div class="boton">
-		<button id="insertar-despues" onclick="insertarDespuesX()">Insertar despues (x) <br>1)Elemento - 2)Dato</button>
-		<input id="val-insertar-despues1" type="number" min="-999" max="999">
-		<input id="val-insertar-despues2" type="number" min="-999" max="999">
-	</div>
-	<div class="boton">
-		<button id="eliminar-antes" onclick="eliminarAntesX()">Eliminar antes (x)</button>
-		<input id="val-eliminar-antes" type="number" min="-999" max="999">
-	</div>
-	<div class="boton">
-		<button id="eliminar-despues" onclick="eliminarDespuesX()">Eliminar despues (x)</button>
-		<input id="val-eliminar-despues" type="number" min="-999" max="999">
-	</div>
-	<div class="boton">
-		<button id="eliminar-lista" onclick="eliminarLista()">Eliminar Lista</button>
-	</div>
-	<!-- plantilla de boton
-	<div class="boton">
-		<button id="agregar" onclick="agregar()">agregar</button>
-		<input id="val-agregar" type="number"  min="-999" max="999">
-	</div>
-	-->
-</div>
-</body>
+	</head>
+
+	<body>
+		<canvas id="tutorial" width="700" height="150"></canvas>
+		<div id="salida"></div>
+		<button onclick="agregar()">insertar al inicio</button>
+		<button onclick="insertar_al_final()">insertar al final</button>
+	</body>
 </html>
