@@ -1,3 +1,48 @@
-/* Add your styles here */
-
-canvas { border: 1px solid black; }
+* {/* eliminando estilos por defecto dle navegador*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    background-color: #ED8555;
+    color: #fff;
+    padding-top:1%;
+    padding-left:10%;
+    padding-right:10%;
+}
+header {
+    position: relative;
+    display: flex;
+    padding-top: 1.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    width: 100%;
+    height: 10%;
+    margin-bottom: 0.6rem;
+}
+.titulo {
+    text-align: center;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.main_title {
+    font-size: 4rem;
+    font-weight: 1200;
+}
+.sub_title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding-top: 12px;
+}
+canvas {
+    border: 3px solid black;
+    background-color: #ffa87d;
+    width: 100%;
+    height: 30%;
+}
