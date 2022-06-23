@@ -10,6 +10,8 @@
 			import {elimina_inicio} from './lib/index.js';
 			import {elimina_ultimo} from './lib/index.js';
 			import {elimina_X} from './lib/index.js';
+			import {elimina_antes_X} from './lib/index.js';
+			import {elimina_despues_X} from './lib/index.js';
 
 			window.CANVAS = document.getElementById("tutorial");
 
@@ -20,6 +22,8 @@
 			window.elimina_inicio=elimina_inicio;
 			window.elimina_ultimo=elimina_ultimo;
 			window.elimina_X=elimina_X;
+			window.elimina_antes_X=elimina_antes_X;
+			window.elimina_despues_X=elimina_despues_X;
 
 		</script>
 
@@ -62,6 +66,14 @@
 			<div class="boton">
 				<button id="eliminar-x" onclick="elimina_X()">Eliminar (X)</button>
 				<input id="val-eliminar-x" type="number" min="-999" max="999">
+			</div>
+			<div class="boton">
+				<button id="eliminar-antes" onclick="elimina_antes_X()">Eliminar Antes (x)</button>
+				<input id="val-eliminar-antes" type="number" min="-999" max="999">
+			</div>
+			<div class="boton">
+				<button id="eliminar-despues" onclick="elimina_despues_X()">Eliminar Despues (x)</button>
+				<input id="val-eliminar-despues" type="number" min="-999" max="999">
 			</div>
 		</div>
 	</body>
