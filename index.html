@@ -20,7 +20,7 @@
 
 			window.CANVAS = document.getElementById("tutorial");
 
-			window.agregar = myList.agregar;
+			window.insertar_al_inicio = myList.insertar_al_inicio;
 			window.insertar_al_final = myList.insertar_al_final;
 			window.insertar_antes_X = myList.insertar_antes_X;
 			window.inserta_despues_X = myList.inserta_despues_X;
@@ -36,17 +36,26 @@
 
 	<body>
 		<div class="container">
+			<br>
 			<div class="titulo">
 				<h1 class="main_title">Proyecto -> Creación de una Lista en JS</h1>
 				<h4 class="sub_title">Curso: Estructura de Datos</h4>
 			</div>
 
 			<canvas id="tutorial" width="700" height="150"></canvas>
-			<div class="botones">
-				<button type="button" class="btn btn-info" id="agregar" onclick="agregar()">Insertar Inicio</button>
+			<div class="botones row justify-content-around">
+				<div class="col-12">
+					<br>
+					<h2 class="text-center">Agregar:</h2>
+				</div>
+				<button type="button" class="btn btn-info" id="insertar_al_inicio" onclick="insertar_al_inicio()">Insertar Inicio</button>
 				<button type="button" class="btn btn-info" id="insertar-final" onclick="insertar_al_final()">Insertar al final</button>
 				<button type="button" class="btn btn-info" id="insertar-antes" onclick="insertar_antes_X()">Insertar antes (x)</button>
 				<button type="button" class="btn btn-info" id="insertar-despues" onclick="inserta_despues_X()">Insertar despues (x)</button>
+				<div class="col-12">
+					<br>
+					<h2 class="text-center">Eliminar:</h2>
+				</div>
 				<button type="button" class="btn btn-info" id="eliminar-inicio" onclick="elimina_inicio()">Eliminar Inicio</button>
 				<button type="button" class="btn btn-info" id="eliminar-final" onclick="elimina_ultimo()">Eliminar Final</button>
 				<button type="button" class="btn btn-info" id="eliminar-x" onclick="elimina_X()">Eliminar (X)</button>
